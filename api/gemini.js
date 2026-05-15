@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const { prompt, useSearch, maxTokens, apiKey } = req.body;
     if (!apiKey) return res.status(400).json({ error: { message: 'API key no proporcionada' } });
 
-    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-04-17:generateContent';
+    const url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
     const body = {
       contents: [{ role: 'user', parts: [{ text: prompt }] }],
       ...(useSearch ? { tools: [{ google_search: {} }] } : {}),
